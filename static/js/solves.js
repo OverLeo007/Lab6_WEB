@@ -15,7 +15,16 @@ getMean = ((arr) => arr.reduce((x, y) => x + y, 0) / arr.length)
 getSqSum = ((arr) => arr.reduce((x, y) => x + y ** 2, 0))
 getNullCount = ((arr) => arr.filter((x) => x === 0).length)
 
-let genSeq = generateSeq(10, -10, 10)
+function setGenerated() {
+    let genSeq = generateSeq(10, -10, 10)
+
+    randSequenceTag.innerText = genSeq.join(' ')
+    randSolve1Tag.innerText = getSqSum(genSeq)
+    randSolve2Tag.innerText = getMean(genSeq)
+    randSolve3Tag.innerText = getNullCount(genSeq)
+}
+
+setGenerated()
 
 
 inpSequenceTag.addEventListener("keyup", () => {
@@ -33,12 +42,8 @@ inpSequenceTag.addEventListener("keyup", () => {
     }
 })
 
+randSequenceTag.addEventListener("click", () => {
+    setGenerated()
+})
 
-const genSqSum = getSqSum(genSeq)
-const genMean = getMean(genSeq)
-const genNullCount = getNullCount(genSeq)
 
-randSequenceTag.innerText = genSeq.join(' ')
-randSolve1Tag.innerText = genSqSum
-randSolve2Tag.innerText = genMean
-randSolve3Tag.innerText = genNullCount
